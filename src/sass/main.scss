@@ -1,0 +1,1076 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import './imports/reset.scss', './imports/mixins.scss',
+  './imports/variables.scss';
+.body {
+  background: #22222290;
+  pointer-events: none;
+}
+.app {
+  max-width: 1000px;
+}
+.header {
+  margin: 0;
+  padding: 0;
+  height: 4em;
+  width: 100vw;
+  max-width: 1000px;
+  background: #eeeeee50;
+  border-radius: 1em;
+  border: 0.1em solid #fff;
+  @include flex(row, nowrap, space-around, center, 0);
+  &__session {
+    cursor: pointer;
+    z-index: 15;
+    padding: 1em;
+  }
+  &__cartel {
+    transform: translateY(-5em);
+    width: 18em;
+    height: 3em;
+    border: 1px solid #eee;
+    border-radius: 0.1em;
+    position: absolute;
+    transition: 0.5s;
+    z-index: 20;
+  }
+  &__warning {
+    width: 100%;
+    height: 90%;
+    background: #eee;
+    font-family: 'Roboto';
+    font-size: 1em;
+    font-weight: bold;
+    @include flex(row, wrap, center, center, 0);
+    border: 1px solid #eee;
+    border-radius: 0.1em;
+  }
+  &__loading {
+    height: 10%;
+    background: #75d075;
+    width: 0%;
+  }
+  .animation_loading {
+    animation-name: loadingWarning;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+  }
+  .cartel_loading {
+    transform: translateY(0);
+  }
+  @keyframes loadingWarning {
+    0% {
+      width: 100%;
+    }
+    100% {
+      width: 0%;
+    }
+  }
+  &__link {
+    padding: 1em;
+    z-index: 20;
+  }
+  &__img {
+    width: 70px;
+    height: 60px;
+    z-index: 20;
+  }
+  &__background {
+    @include flex(column, nowrap, center, center, 0.5em);
+    position: relative;
+    background: #12121290;
+    border-radius: 1em;
+    box-shadow: 0.4em 0.4em 0.4em #000;
+    width: 20em;
+    height: 20em;
+  }
+  &__form {
+    position: absolute;
+    @include flex(column, wrap, center, center, 0.6em);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+    z-index: -1;
+    transition: 0.5s ease-in-out;
+    width: 0%;
+    height: 0%;
+    visibility: hidden;
+  }
+  &__form-loggin {
+    position: absolute;
+    @include flex(column, wrap, center, center, 0.6em);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+    transition: 0.5s ease-in-out;
+    width: 0%;
+    height: 0%;
+  }
+  &__containerform {
+    position: absolute;
+    @include flex(column, wrap, center, center, 0.6em);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+    transition: 0.5s ease-in-out;
+    width: 0%;
+    height: 0%;
+  }
+  .logearse {
+    z-index: 30;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    // overflow-x: hidden;
+    opacity: 1;
+    backdrop-filter: blur(1em);
+    visibility: visible;
+  }
+
+  &__input {
+    padding: 0.2em 0.7em;
+    width: 15em;
+    font-size: 1em;
+    color: #000;
+    background: #eeeeee70;
+    border: 2px solid #fff;
+    &::placeholder {
+      color: #000;
+    }
+  }
+  &__button-div {
+    @include flex(row, nowrap, end, end, 0);
+  }
+  &__button {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    @include flex(row, nowrap, center, center, 0);
+    background: transparent;
+    position: absolute;
+    right: 2em;
+  }
+  &__buttons {
+    @include flex(row, nowrap, space-between, center, 1em);
+  }
+  &__buttons-action {
+    color: #fff;
+    padding: 0.5em;
+    font-size: 1em;
+    font-family: 'Roboto';
+    background: transparent;
+    border-bottom: 0.1em solid #fff;
+  }
+  &__loggin {
+    cursor: pointer;
+  }
+  &__controller {
+    text-align: center;
+    color: $valid-incorrect;
+    font-weight: bold;
+  }
+  &__form-h {
+    height: 30em;
+  }
+  &__div-favorits {
+    position: relative;
+  }
+  &__favorits {
+    position: absolute;
+    width: 1.3em;
+    height: 1.3em;
+    left: -0.5em;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 50%;
+    font-weight: bold;
+    @include flex(row, nowrap, center, center, 0);
+    background: $valid-incorrect;
+  }
+  &__container-form {
+    background: red;
+  }
+}
+.landing {
+  background: url(http://localhost:3000/assets/landing.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  @include flex(row, nowrap, center, center, 2em);
+  &__link {
+    font-size: 2em;
+    font-weight: bold;
+    padding: 0.8em;
+    background: #34200a;
+    border: 0.2em solid #a75735;
+    border-radius: 2em;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    cursor: pointer;
+    transition: 0.5s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  &__div {
+    @include flex(column, nowrap, center, center, 0.5em);
+    background: #34200a;
+    padding: 0.5em;
+    border-radius: 2em;
+    border: 0.4em solid #a75735;
+    border-left-color: transparent;
+    border-top-color: transparent;
+  }
+  &__span {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    max-width: 15em;
+    color: #fff;
+  }
+}
+.home {
+  @include flex(column, wrap, center, center, 0.8em);
+  &__height {
+    height: 95.5px;
+  }
+  &__container {
+    background: #eeeeee70;
+    padding: 1em;
+    border: 0.1em solid $strong-white;
+    border-radius: 0.3em;
+    @include flex(row, wrap, center, center, 0.5em);
+  }
+  &__welcome {
+    @include flex(row, wrap, center, center, 0);
+    font-family: 'Roboto';
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  &__form {
+    box-sizing: border-box;
+    @include flex(row, wrap, center, center, 0.1em);
+  }
+  &__input {
+    padding: 0.7em;
+    background: #eeeeee70;
+    &::placeholder {
+      font-family: 'Roboto';
+      font-size: 1em;
+      font-weight: bold;
+    }
+  }
+  &__button {
+    padding: 0.6em;
+  }
+  &__div {
+    @include flex(row, wrap, center, center, 0.5em);
+  }
+  &__select {
+    padding: 0.6em;
+    font-family: 'Roboto';
+    font-size: 0.9em;
+    font-weight: bold;
+    position: relative;
+    background: linear-gradient(90deg, #eee 0%, #333 100%);
+    border-radius: 0.2em;
+  }
+
+  @keyframes weigth {
+    from {
+      width: 0%;
+      height: 100%;
+      background: #ee32;
+    }
+    to {
+      width: 100%;
+      height: 100%;
+      background: #ee32;
+    }
+  }
+  &__option {
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: 'Roboto';
+    padding: 0.1em;
+    background: linear-gradient(90deg, #eee 0%, #333 100%);
+
+    text-align: left;
+  }
+}
+.dog {
+  position: relative;
+  &__cartel {
+    width: 18em;
+    height: 3em;
+    border: 1px solid #eee;
+    border-radius: 0.1em;
+    position: absolute;
+    transition: 0.5s;
+    top: 1em;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    margin: auto;
+    visibility: hidden;
+  }
+  &__warning {
+    width: 100%;
+    height: 90%;
+    background: #eee;
+    font-family: 'Roboto';
+    font-size: 1em;
+    font-weight: bold;
+    @include flex(row, wrap, center, center, 0);
+    border: 1px solid #eee;
+    border-radius: 0.1em;
+  }
+  &__loading {
+    height: 10%;
+    background: #ae5151;
+    width: 0%;
+  }
+  .animation_loading {
+    animation-name: loadingWarning;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+  }
+  .cartel_loading {
+    opacity: 1;
+    z-index: 20;
+    visibility: visible;
+  }
+  @keyframes loadingWarning {
+    0% {
+      width: 100%;
+    }
+    100% {
+      width: 0%;
+    }
+  }
+  &__h1 {
+    font-size: 2em;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-align: center;
+    padding: 0.5em;
+  }
+  &__container {
+    position: relative;
+    min-height: 43.6em;
+    @include flex(row, wrap, center, center, 0.5em);
+  }
+  &__carruzel {
+    @include flex(row, nowrap, center, center, 0.5em);
+  }
+  &__div {
+    @include flex(column, wrap, center, center, 0.6em);
+    text-align: center;
+    transition: 0.5s ease;
+    background: #eeeeee20;
+    padding: 0.3em;
+    border-radius: 0.5em;
+    position: relative;
+    &:hover {
+      z-index: 2;
+      transform: scale(1.1);
+      background: #eeeeee;
+    }
+  }
+  &__divdog {
+    position: relative;
+    transition: 0.5s ease;
+    overflow: hidden;
+    filter: brightness(0.8) saturate(2);
+    &:hover {
+      background: $background;
+    }
+    &:hover .dog__absolute {
+      transform: translateY(0);
+    }
+  }
+  &__h2 {
+    color: #222;
+    font-weight: bold;
+    font-size: 1.3em;
+  }
+  &__absolute {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    color: $strong-white;
+    @include flex(column, nowrap, center, center, 0.7em);
+    transform: translateY(12.7em);
+    backdrop-filter: blur(1em);
+    transition: 0.5s ease;
+  }
+  &__temperament {
+    color: #000;
+    font-weight: bold;
+  }
+  &__weight {
+    color: #000;
+    font-weight: bold;
+  }
+  &__img {
+    width: 280px;
+    height: 180px;
+  }
+  &__div-i {
+    width: 1em;
+    height: 1em;
+    display: block;
+    position: absolute;
+    bottom: 0.6em;
+    right: 0.2em;
+    padding: 0.7em;
+    background: #ffffff;
+    border-radius: 50%;
+    @include flex(row, wrap, center, center, 0);
+    z-index: 10;
+    cursor: pointer;
+    transition: 0.5s ease;
+  }
+  &__i {
+    transition: 0.5s ease;
+    @include flex(row, nowrap, center, center, 0);
+  }
+  &__bkdiv {
+    background: #e0c2c2;
+  }
+  &__page {
+    background: #ffffff90;
+    padding: 0.3em;
+    font-size: 1.3em;
+    font-weight: bold;
+    font-family: 'Roboto';
+  }
+  &__redsocial {
+    position: absolute;
+    margin: auto;
+    left: 1.6%;
+    top: 32%;
+    background: #0a66c2;
+    z-index: 5;
+    border-bottom-right-radius: 1em;
+    border-top-right-radius: 1em;
+    height: 5em;
+    width: 1.1em;
+    padding: 0.2em;
+    cursor: pointer;
+    transition: 0.5s ease;
+  }
+  &__perfil {
+    position: relative;
+    fill: #fff;
+    height: 80%;
+    @include flex(row, nowrap, center, center, 0);
+  }
+  &__a {
+    position: absolute;
+    top: 1em;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-2.5em);
+    background: #ffff;
+    height: 7em;
+    width: 1.5em;
+    border-radius: 3em;
+    padding: 0.5em;
+    @include flex(column, nowrap, space-between, center, 0);
+    transition: 0.5s ease;
+  }
+  &__buttonexit {
+    display: block;
+    z-index: 15;
+  }
+}
+.detail {
+  @include mv() {
+    width: 100%;
+  }
+  &__container-x {
+    @include flex(row, nowrap, center, center, 0);
+  }
+  &__confirm {
+    background: #eee;
+    text-align: center;
+    padding: 0.3em;
+    border-radius: 2em;
+    opacity: 0;
+    visibility: visible;
+    position: absolute;
+    z-index: 30;
+    pointer-events: visible;
+    transition: 0.5s ease;
+  }
+  .revelate {
+    opacity: 1;
+    visibility: visible;
+  }
+  &__cofirm-p {
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+  &__confirm-div {
+    @include flex(row, nowrap, center, center, 0.8em);
+  }
+  &__confirm-button {
+    background: #8dca8d;
+    padding: 0.5em;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1em;
+    width: 2.5em;
+    height: 2.5em;
+    &:nth-child(2) {
+      background: #d56b6b;
+    }
+  }
+
+  &__divc {
+    height: 100vh;
+    @include flex(row, wrap, center, center, 0);
+    @include mv() {
+      width: 100%;
+      @include flex(column, wrap, center, center, 0);
+      margin: auto;
+    }
+  }
+  @include flex(column, wrap, center, center, 0);
+  background: #eeeeee60;
+  padding: 1em;
+
+  &__container {
+    position: relative;
+    padding: 1.4em;
+  }
+  &__exit {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0.2em;
+  }
+  &__button-exit {
+    background: transparent;
+  }
+  &__map {
+    @include flex(row, wrap, center, center, 1em);
+    @include mv() {
+      @include flex(column, wrap, center, center, 0.5em);
+      flex-direction: column-reverse;
+      width: 100vw;
+    }
+  }
+  &__right {
+    text-align: center;
+  }
+  &__h2 {
+    color: #000;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    margin: 0 0 1em 0;
+    font-size: 1.2em;
+  }
+  &__image {
+    padding-left: 0.8em;
+    border-left: 2px solid #000;
+    filter: brightness(0.8) saturate(2);
+    @include mv() {
+      border: none;
+    }
+  }
+  &__img {
+    width: 280px;
+    height: 190px;
+  }
+  &__left {
+    @include flex(column, wrap, center, center, 0.5em);
+    align-self: center;
+    @include mv() {
+      width: 100%;
+    }
+  }
+  &__details {
+    font-weight: bold;
+    @include mv() {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  &__links {
+    margin: 0.3em 0 0 0;
+    background: #eeeeee30;
+    padding: 2em;
+    filter: brightness(0.8) saturate(2);
+    @include flex(row, wrap, space-between, center, 1.2em);
+    @include mv() {
+      @include flex(column, wrap, center, center, 0.6em);
+      padding: 0;
+    }
+  }
+  &__divrandom {
+    @include flex(row, wrap, center, center, 0.4em);
+  }
+  &__random {
+    width: 50px;
+    height: 50px;
+  }
+  &__link-button {
+    position: relative;
+    @include flex(row, nowrap, center, center, 0);
+    overflow: hidden;
+    transition: 0.5s ease;
+    color: $strong-white;
+    font-family: 'Roboto';
+    font-weight: bold;
+    letter-spacing: 0.3em;
+    font-size: 1.5em;
+    color: $black;
+    &:hover .detail__linkabsolute {
+      transform: translateY(0);
+      color: $black;
+    }
+  }
+  &__linkabsolute {
+    color: $black;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    @include flex(row, nowrap, center, center, 0.3em);
+    transform: translateY(9.5em);
+    backdrop-filter: blur(1em);
+    transition: 0.5s ease;
+  }
+  &__white {
+    margin: 0.2em 0.1em;
+    width: 2em;
+    height: 2em;
+    background: $strong-white;
+  }
+  &__button {
+    @include flex(row, nowrap, space-between, center, 0.1em);
+  }
+  &__span {
+    display: inline-block;
+    width: 4.5em;
+  }
+  &__warning {
+    @include flex(row, wrap, center, center, 0);
+    max-width: 16em;
+    flex-grow: 1;
+    text-align: center;
+    color: $valid-incorrect;
+    font-weight: bold;
+  }
+  &__detaildiv {
+    display: inline-block;
+  }
+  &__absolute {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    @include flex(column, wrap, center, center, 0.4em);
+    transition: 0.5s linear;
+  }
+  &__update {
+    @include flex(column, wrap, center, center, 0.4em);
+    background: #fff;
+    width: 15em;
+    height: 5em;
+    font-size: 1.1em;
+    font-weight: bold;
+    z-index: 25;
+    transition: 0.5s linear;
+    display: none;
+  }
+  .block {
+    display: block;
+    text-align: center;
+    z-index: 50;
+    @include flex(column, wrap, center, center, 0.4em);
+  }
+  &__updateimg {
+    @include flex(row, wrap, center, center, 0);
+  }
+  .mostrar {
+    opacity: 1;
+    visibility: visible;
+    z-index: 50;
+  }
+  .input {
+    max-width: 10em;
+  }
+  .form {
+    margin: 0.3em;
+    width: 20em;
+  }
+  &__temperamentactions {
+    max-width: 10em;
+    @include mv() {
+      max-width: 100%;
+      text-align: center;
+    }
+  }
+}
+.formdog {
+  @include flex(row, nowrap, center, center, 0);
+  flex-flow: column;
+  min-height: 55em;
+  &__form {
+    max-width: 500px;
+    margin: 0.3em 0 0 0;
+    background: #eeeeee60;
+    padding: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+  }
+  &__div {
+    @include flex(column, nowrap, center, center, 0.3em);
+  }
+  &__flex {
+    display: flex;
+    gap: 1em;
+  }
+  &__input {
+    padding: 0.5em;
+    font-size: 1em;
+    margin: 0.5em 0 0 0;
+    width: 100%;
+    background: $transparent;
+    border: 1px solid $strong-white;
+  }
+  &__files {
+    margin: 0.5em 0 0 0;
+    position: relative;
+    height: 2em;
+    width: 6em;
+    overflow: hidden;
+    @include flex(row, nowrap, center, center, 0);
+    background: $transparent;
+    cursor: pointer;
+    border: 0.1em solid $strong-white;
+  }
+  &__addfiles {
+    font-family: 'Roboto';
+    color: #000;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  &__three {
+    position: absolute;
+    border: none;
+    outline: none;
+    font-size: 1.2em;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left: 0;
+    margin: auto;
+    opacity: 0;
+    cursor: pointer;
+  }
+  &__images {
+    margin: 0.6em 0 0 0;
+  }
+  &__span {
+    color: $valid-incorrect;
+  }
+  &__button {
+    margin: 0.5em 0 0 0;
+    @include flex(column, nowrap, center, center, 0.3em);
+  }
+  &__temperaments {
+    margin: 0.5em 0 0 0;
+  }
+  &__divflex {
+    background: #eeeeee20;
+    padding: 0.5em;
+    margin: 0.3em 0 0 0;
+    @include flex(row, wrap, center, center, 0.4em);
+  }
+  &__buttontemperament {
+    background: transparent;
+    cursor: pointer;
+  }
+  &__divtemperament {
+    background: $transparent;
+    padding: 0.2em;
+    @include flex(row, wrap, center, center, 0.3em);
+  }
+  &__temperaments-span {
+    margin: 0.5em 0 0 0;
+  }
+  &__success {
+    position: absolute;
+    font-size: 1.5em;
+    @include flex(column, wrap, center, center, 0.5em);
+    background: $strong-white;
+    border-radius: 0.6em;
+    max-width: 15em;
+    height: 6em;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: 0.5s ease;
+  }
+  &__bad-request {
+    color: #bb3636;
+    animation-name: bad-request;
+    animation-duration: 5s;
+    animation-timing-function: ease;
+    animation-iteration-count: inherit;
+  }
+  @keyframes bad-request {
+    0% {
+      z-index: 2;
+      opacity: 1;
+      transform: translateY(-5em);
+    }
+    100% {
+      z-index: 2;
+      opacity: 0;
+    }
+  }
+  &__successfully {
+    color: #4f9c40;
+    z-index: 2;
+    opacity: 1;
+    transform: translateY(-10em);
+  }
+  &__img {
+    width: 2em;
+    height: 2em;
+    margin: 0 auto;
+  }
+  &__send {
+    display: block;
+    margin: 1em 0 0 0;
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+}
+.button {
+  &__container {
+    margin: 0.5em 0 0 0;
+    width: 450px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 10;
+  }
+  &__a {
+    cursor: pointer;
+    position: relative;
+    background: #444;
+    color: $strong-white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.3em;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    padding: 10px 30px;
+    transition: 0.5s;
+    font-family: 'Roboto';
+    color: $strong-white;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover {
+      letter-spacing: 0.25em;
+      background: $white;
+      color: $white;
+      box-shadow: 0 0 35px $white;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      background: $black;
+    }
+  }
+  &__span {
+    position: relative;
+    z-index: 1;
+  }
+  &__i::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 100%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: $black;
+    border: 2px solid $white;
+    transition: 0.5s;
+  }
+  &__i {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+  &__i::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: $black;
+    border: 2px solid $white;
+    transition: 0.5s;
+  }
+  .button__a:hover .button__i::before {
+    left: 0;
+    transform: translateX(-50%) rotate(45deg);
+    box-shadow: 33.2px 31.2px $white;
+  }
+  .button__a:hover .button__i::after {
+    left: 100%;
+    transform: translateX(-50%) rotate(-45deg);
+    box-shadow: 32px -33px $white;
+  }
+}
+.favorits {
+  @include flex(column, wrap, center, center, 1em);
+  text-align: center;
+  min-height: 88vh;
+  &__welcome {
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    font-size: 1.3em;
+  }
+  &__h2 {
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 0.1em;
+  }
+  &__container {
+    @include flex(row, wrap, space-between, center, 1em);
+  }
+  &__card {
+    text-align: left;
+    width: 15em;
+    background: #eeeeee90;
+    border: 1px solid #fff;
+    border-radius: 0.5em;
+    padding: 0.4em;
+    flex-grow: 1;
+  }
+  &__img {
+    filter: brightness(0.8) saturate(2);
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+  }
+  &__flex {
+    @include flex(row, wrap, center, center, 0.5em);
+  }
+  &__stats {
+    padding: 0.1em;
+  }
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.error {
+  @include flex(column, wrap, center, center, 1em);
+  height: 100vh;
+  &__span {
+    font-size: 1.7em;
+    font-weight: bold;
+    font-family: 'Roboto';
+    text-align: center;
+  }
+  &__img {
+    @include flex(row, wrap, center, center, 0);
+    margin: 0 auto;
+    width: 25em;
+    height: 20em;
+  }
+}
+.footer {
+  @include flex(row, wrap, center, center, 0);
+  position: relative;
+  bottom: 0;
+  &__div {
+    background: #eeeeee90;
+    border: 1px solid #fff;
+    border-radius: 0.3em;
+    padding: 0.2em;
+  }
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.select {
+  transform: scale(1.6);
+  border-radius: 50%;
+  padding: 0.1em;
+  background: #e0c2c2;
+
+  // @include flex(row, nowrap, center, center, 0);
+}
+.cut {
+  height: 100vh;
+  overflow: hidden;
+}
+.linksview {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+.exit {
+  transform: translateY(-1em);
+  border-radius: 3em;
+  width: 3em;
+  @include flex(row, nowrap, center, center, 0);
+}
+// .linksocults {
+//   transform: translateX(-2.5em);
+//   opacity: 0;
+//   visibility: hidden;
+// }
