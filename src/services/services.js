@@ -1,4 +1,4 @@
-export const URL = 'http://localhost:3001/';
+export const URL = 'https://jonatan-valdiviezo-pi.vercel.app/';
 const fetchDogs = async (id = false, value = false) => {
   if (id) {
     const res = await fetch(`${URL}dogs/${id}`);

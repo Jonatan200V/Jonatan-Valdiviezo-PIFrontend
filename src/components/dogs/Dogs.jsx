@@ -106,7 +106,6 @@ const Dogs = ({ result }) => {
     const $container = document.querySelector('.dog__redsocial');
     $div.classList.toggle('linksview');
     $container.classList.toggle('exit');
-    console.log('hola removido');
   };
 
   return (

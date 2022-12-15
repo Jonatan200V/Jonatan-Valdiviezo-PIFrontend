@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { favorits, close, loggin } from '../../icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { userFavorit } from '../../redux/actions/ActionsFiltered';
+import { URL } from '../../services/services';
 import { INITIAL_STATE_LOGIN } from '../../services/variables';
 
 const expresiones = {
@@ -46,7 +47,7 @@ const Header = () => {
   } = validations;
   const handleSubmitLoggin = async (evt) => {
     evt.preventDefault();
-    const res = await fetch('http://localhost:3001/user/register', {
+    const res = await fetch(`${URL}user/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -57,7 +58,6 @@ const Header = () => {
       }),
     });
     const data = await res.json();
-    console.log(data);
     if (res.status === 500) {
       setTimeout(() => {
         setResponseBackend('');
@@ -97,8 +97,7 @@ const Header = () => {
         userSend: false,
       });
     }
-    console.log('Hola');
-    const res = await fetch(`http://localhost:3001/user`, {
+    const res = await fetch(`${URL}user`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -119,7 +118,6 @@ const Header = () => {
     } else {
       dispatch(userFavorit(data));
       handleClickClose();
-      console.log(data);
     }
   };
   const handleChange = (evt) => {

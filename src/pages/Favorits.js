@@ -13,7 +13,6 @@ const Favorits = () => {
     }
     document.title = 'Favorits';
   }, []);
-  console.log(store);
   return (
     <div>
       <Header />

@@ -183,7 +183,6 @@ const FormDog = () => {
     }
   };
   const handleDeleteTemperament = (temperamentName) => {
-    console.log(temperamentName);
     const inputTemperamentDelete = inputTemperament.filter(
       (temperament) => temperament !== temperamentName
     );
